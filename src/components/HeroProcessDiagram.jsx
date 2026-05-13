@@ -97,7 +97,7 @@ export default function BusinessProcessFlow() {
           display:flex;
           justify-content:space-between;
           padding:0 0;
-          margin-bottom: 88px;
+          margin-bottom: 44px;
         }
 
         .businessFlowTopBox{
@@ -117,9 +117,10 @@ export default function BusinessProcessFlow() {
           max-width:1000px;
           display:flex;
           align-items:center;
-          justify-content:center;
+          justify-content:space-around;
           gap:56px;
           position:relative;
+          margin-bottom: 42px;
         }
 
         .businessFlowConnSvgFull {
@@ -161,6 +162,7 @@ export default function BusinessProcessFlow() {
           font-weight:600;
           position:relative;
           z-index:2;
+          bottom: 27px;
         }
 
         .businessFlowDarkCard{
@@ -186,11 +188,37 @@ export default function BusinessProcessFlow() {
           width:90px;
           height:90px;
           border-radius:50%;
-          border:2px dotted rgba(255,255,255,0.35);
+          background:#000;
           display:flex;
           align-items:center;
           justify-content:center;
         }
+          .hero-center-logo-container{
+  position: relative;
+  border-radius: 999px;
+  padding: 10px;
+}
+
+        .businessFlowCenterBorder::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  padding: 2px;
+
+  background: repeating-conic-gradient(#979797 0deg 
+5deg, transparent 5deg 12deg);
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  pointer-events: none;
+}
+          
 
         .businessFlowCenterLogo{
           width:66px;
@@ -236,7 +264,7 @@ export default function BusinessProcessFlow() {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0px;
   z-index: 2;
   width: fit-content;
 }
