@@ -44,16 +44,96 @@ button {
   display: grid;
   gap: 2rem;
   align-items: start;
+  padding: 0px 40px;
+
 }
 
 @media (min-width: 992px) {
   .services-layout {
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: minmax(420px, 480px) 1fr;
+  }
+}
+
+.services-intro {
+  text-align: left;
+}
+
+.services-intro .title-section-lg {
+  text-align: left;
+  line-height: 1.05;
+}
+
+.services-intro__lead {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: #adb5bd;
+  font-size: 1rem;
+  line-height: 1.55;
+  text-align: left;
+  max-width: 32ch;
+}
+
+@media (min-width: 992px) {
+  .services-intro {
+    position: sticky;
+    top: 5.25rem;
+    align-self: start;
+  }
+}
+
+@media (max-width: 991px) {
+  .services-intro,
+  .services-intro .title-section-lg,
+  .services-intro__lead {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-intro__lead {
+    max-width: 40ch;
+  }
+}
+
+/* Right column: internal scroll + smooth wheel / programmatic scroll (scrollbar hidden) */
+.services-scroll {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: min(72vh, 560px);
+  padding-right: 0;
+  scrollbar-gutter: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.services-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.services-scroll:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.28);
+  outline-offset: 3px;
+}
+
+.services-scroll:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (max-width: 991px) {
+  .services-scroll {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+    scrollbar-gutter: auto;
   }
 }
 
 .title-section-lg {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(4rem, 6vw, 5rem);
   font-weight: 700;
   margin: 0;
 }
@@ -85,6 +165,21 @@ button {
 
 .service-list li {
   margin-bottom: 0.5rem;
+}
+
+.service-card-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.service-card-link:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.45);
 }
 
 /* --- Partnership --- */
@@ -321,15 +416,5 @@ textarea.form-input-dark {
     order: 3;
     width: 100%;
     margin-top: 0.5rem;
-  }
-
-  .hero-center-logo {
-    width: 4.75rem;
-    height: 4.75rem;
-  }
-
-  .process-top-labels {
-    min-width: 650px;
-    padding: 0 0.5rem;
   }
 }

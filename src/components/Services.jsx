@@ -1,4 +1,5 @@
 import { services } from '../data/services.js'
+import { ArrowRight } from 'lucide-react';
 
 export default function Services() {
   return (
@@ -28,81 +29,62 @@ export default function Services() {
             padding: 1.5rem;
             height: 100%;
           }
-
-          .services-layout {
-            display: grid;
-            gap: 2rem;
-            align-items: start;
-          }
-
-          @media (min-width: 992px) {
-            .services-layout {
-              grid-template-columns: 1fr 2fr;
-            }
-          }
-
-          .title-section-lg {
-            font-size: clamp(3rem, 7vw, 6rem);
-            font-weight: 700;
-            margin: 0;
-                text-align: center;
-    line-height: 6rem;
-          }
-
-          .services-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: 1fr;
-          }
-
-          @media (min-width: 768px) {
-            .services-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-
-          .service-card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-          }
-
-          .service-list {
-            margin: 1rem 0 0;
-            padding-left: 1.25rem;
-            color: #adb5bd;
-            font-size: 0.9375rem;
-          }
-            .paragraph-creating-strong{
-              margin-top:1rem;
-              color:#adb5bd;
-              font-size:1rem;
-              text-align:center;
-            }
+.custom-dotted {
+  border: none;
+  height: 2px;
+  background-image: radial-gradient(circle, #666 1.5px, transparent 1.5px);
+  background-size: 7px 1px; /* increase 14px for more gap */
+  background-repeat: repeat-x;
+}
+  .service-card-link-learn-more {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    display: inline-block;
+  }
+    .service-card-link-learn-more{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
         `}
       </style>
       <section id="services" className="section-dark section-block border-t-subtle">
         <div className="shell">
           <div className="services-layout">
-            <div>
+            <div className="services-intro">
               <h2 className="title-section-lg">Brand Growth</h2>
-              <p className='paragraph-creating-strong'>Creating strong, consistent brand experiences across digital and physical touchpoints.</p>
+              <p className="services-intro__lead">
+                Creating strong, consistent brand experiences across digital and physical touchpoints.
+              </p>
             </div>
-            <div className="services-grid">
-              {services.map((s) => (
-                <article key={s.title} className="glass-card glass-card--pad">
-                  <h3 className="service-card-title">{s.title}</h3>
-                  <ul className="service-list">
-                    {s.items.map((line) => (
-                      <li key={line}>{line}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+            <div
+              className="services-scroll"
+              tabIndex={0}
+              aria-label="Service offerings"
+            >
+              <div className="services-grid">
+                {services.map((s) => (
+                  <article key={s.title} className="glass-card glass-card--pad">
+                    <h3 className="service-card-title">{s.title}</h3>
+                    <ul className="service-list">
+                      {s.items.map((line) => (
+                        <li key={line}>{line}</li>
+                      ))}
+                    </ul>
+                    <hr className="border-subtle custom-dotted" />
+                    <a href="#contact" className="service-card-link-learn-more">
+                      Learn more <ArrowRight size={16} />
+                    </a>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }
